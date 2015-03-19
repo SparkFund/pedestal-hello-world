@@ -8,7 +8,7 @@
 #_(defonce runnable-service (server/create-server service/service))
 (defn runnable-service [] (server/create-server service/service)) ;; for war testing - don't want to create a server
 
-#_(defn run-dev
+(defn run-dev
   "The entry-point for 'lein run-dev'"
   [& args]
   (println "\nCreating your [DEV] server...")
