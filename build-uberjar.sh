@@ -3,7 +3,7 @@
 set -e
 rm -rf target/war
 lein pom
-mvn dependency:copy-dependencies -DoutputDirectory=target/war/WEB-INF/lib
+mvn dependency:copy-dependencies -DoutputDirectory=target/war/WEB-INF/lib -DincludeScope=runtime
 mkdir -p target/war/WEB-INF/classes
 cp -R src/* config/* target/war/WEB-INF/classes
 
