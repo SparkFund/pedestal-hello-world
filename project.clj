@@ -96,6 +96,7 @@
   :profiles {:dev {:aliases {"run-dev" ["trampoline" "run" "-m" "hello-world-service.server/run-dev"]
                              "jetty-runner" ["trampoline" "with-profile" "jetty-runner" "run"]} ; eg: lein jetty-runner target/hello-world.war
                    :dependencies [[io.pedestal/pedestal.service-tools "0.3.1"]
+                                  [org.clojure/tools.namespace "0.2.6"] ;; Has to be specified otherwise excluding lein plugins will cause 0.1.3 to be picked by service-tools
                                   [io.pedestal/pedestal.jetty "0.3.1"]]}
              :jetty-runner {:dependencies ^:replace [[org.clojure/clojure "1.6.0"] ; Not sure why this needs to be here for just running a pure java jar? Get complaints if missing.
                                                      [org.eclipse.jetty/jetty-runner "9.2.10.v20150310" :exclusions [org.glassfish/javax.el]] ; version range used on javax.el
@@ -103,6 +104,7 @@
                             :main org.eclipse.jetty.runner.Runner}}
   :main ^{:skip-aot true} hello-world-service.server
   :plugins [[ohpauleez/lein-pedestal "0.1.0-beta10"]
-            [pandect "0.5.1"]]
+            [pandect "0.5.1"]
+            [lein-lock "0.1.0-SNAPSHOT"]]
   :pedestal {:server-ns hello-world-service.server
              :url-pattern "/*"})
