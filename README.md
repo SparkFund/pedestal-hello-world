@@ -1,8 +1,10 @@
 # hello-world-service
 
-FIXME
+A minimal pedestal web app
 
 ## Getting Started
+
+### Via run-dev
 
 1. Start the application: `lein run-dev` \*
 2. Go to [localhost:8080](http://localhost:8080/) to see: `Hello World!`
@@ -13,6 +15,21 @@ FIXME
 
 \* `lein run-dev` automatically detects code changes. Alternatively, you can run in production mode
 with `lein run`.
+
+### Via jetty-runner
+
+Jetty-runner tests an actual war artifact inside a jetty server, instead of running with an embedded
+server.
+
+`lein jetty-runner target/hello-world.war`
+
+
+### Checking transitive dependencies
+
+Use `lein lock` to check the calculated dependencies against the stated transitive dependencies.
+
+When updating direct dependencies, generate a new dependencies.lockifle with `lein lock freshen`
+and check this file into source control.
 
 ## Configuration
 
